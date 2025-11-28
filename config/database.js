@@ -35,18 +35,3 @@ pool.getConnection()
     });
 
 module.exports = pool;
-```
-
-### Step 3: Check if Using the Right Database
-
-You have **two databases**:
-- `db_8b8kaaki1z5s` (for booklibrary)
-- `db_bujwew2bdmfu` (for rythmo)
-
-Make sure you're using the correct one! Based on your Vercel URL (`rythmo-front`), you probably want to use **`db_bujwew2bdmfu`**:
-```
-DB_HOST=up-de-fra1-mysql-1.db.run-on-seenode.com
-DB_PORT=11550
-DB_USER=db_bujwew2bdmfu
-DB_PASSWORD=ceePGdTKwlxITLtfPV94C6Ym
-DB_NAME=db_bujwew2bdmfu
