@@ -15,31 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ===== MIDDLEWARES =====
-const allowedOrigins = [
-    'https://rythmo-front-b88gq2mxv-fer-velas-projects.vercel.app',
-    'http://localhost:5500',
-    'http://127.0.0.1:5500'
-];
-
-const corsOptions = {
-    origin: function (origin, callback) {
-        // Permitir requests sin origin (como Postman, curl, apps móviles)
-        if (!origin) return callback(null, true);
-
-        if (allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            console.log('❌ Origen bloqueado por CORS:', origin);
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
+app.use(cors);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

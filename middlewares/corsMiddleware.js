@@ -3,6 +3,8 @@ const cors = require('cors');
 
 // ===== IPs AUTORIZADAS =====
 const ALLOWED_ORIGINS = [
+  'https://rythmo-front.vercel.app',  // ← Add your main domain
+  'https://rythmo-front-b88gq2mxv-fer-velas-projects.vercel.app',
   'http://localhost:5500',
   'http://127.0.0.1:5500',
   'http://localhost:57812',
