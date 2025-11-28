@@ -14,10 +14,18 @@ const ALLOWED_ORIGINS = [
   
 ];
 
-// ===== CORS MIDDLEWARE =====
 const corsMiddleware = cors({
   origin: function (origin, callback) {
-    if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) {
+      return callback(null, true);
+    }
+    
+    // Check if origin is in allowed list OR matches Vercel pattern
+    const isAllowed = ALLOWED_ORIGINS.includes(origin) || 
+                     origin.match(/^https:\/\/rythmo-front.*\.vercel\.app$/);
+    
+    if (isAllowed) {
       callback(null, true);
     } else {
       console.error("Not allowed by CORS:", origin);
